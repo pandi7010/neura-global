@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+#hero-title {
+    font-size: 4rem;
+    background: linear-gradient(to right, #00c6ff, #0072ff); /* Updated gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-gradient {
+    background: linear-gradient(to right, #00c6ff, #0072ff); /* Updated gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.colorful-section {
+    background: linear-gradient(to right, #00c6ff, #0072ff); /* Updated gradient */
+    color: #fff;
+}
+footer {
+    background: #0072ff; /* Updated solid color */
+}
+.social-icons a {
+    font-size: 1.2rem;
+}
