@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neura Global | Technology Innovation Portfolio</title>
+    <meta name="description" content="Neura Global - A holding company for innovative technology ventures including Plastrail, LAMP, and Quantum Robotics">
+    <meta property="og:title" content="Neura Global | Technology Innovation Portfolio">
+    <meta property="og:image" content="https://neuraglobal.com/social-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gold: #d4af37;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 8px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .brand-logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .brand-logo {
+            height: 40px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--gold));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* About Section */
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Companies Section */
+        .company-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .company-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .company-logo-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .company-logo-overlay img {
+            height: 30px;
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        /* Founder Section */
+        .founder-card {
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .founder-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+        }
+        
+        /* FAQ Section */
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(37, 99, 235, 0.25);
+        }
+        
+        /* Contact Section */
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            height: 100%;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 40px 0 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .brand-logos {
+                gap: 15px;
+            }
+            
+            .brand-logo {
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .navbar-brand img {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Neura Global Logo">
+                Neura Global
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#companies">Companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#founder">Founder</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faqs">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <video autoplay muted loop class="hero-video">
+            <source src="placements.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            
+            <h1 class="hero-title">Innovate. Automate. Elevate.</h1>
+            <p class="hero-subtitle">A portfolio of technology companies shaping the future through sustainable innovation and cutting-edge solutions.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#about" class="btn btn-primary btn-lg px-4 py-2">Discover Neura</a>
+                <a href="#companies" class="btn btn-outline-light btn-lg px-4 py-2">Our Companies</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about" class="section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title">About Neura Global</h2>
+                    <p class="lead">Neura Global Technologies is a holding company that invests in and nurtures innovative technology ventures solving real-world problems.</p>
+                    <p>We identify promising startups and provide them with the resources, expertise, and network they need to scale and make a meaningful impact. Our portfolio spans sustainability solutions, smart infrastructure, and advanced robotics.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#companies" class="btn btn-primary px-4">Our Portfolio</a>
+                        <a href="#founder" class="btn btn-outline-primary px-4">Our Founder</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="logo.png" alt="About Neura Global" class="img-fluid about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Companies Section -->
+    <section id="companies" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-uppercase text-primary mb-3">Our Portfolio</h6>
+                <h2 class="section-title">Companies Under Neura Global</h2>
+                <p class="section-subtitle">We invest in and nurture innovative technology companies that are solving real-world problems across multiple industries.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Plastrail -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="company-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/styles/medium_crop_simple/public/2023-05/plastics.jpg?VersionId=x.bXytWCSsQ03Jm8IUp99CJh9.DF.g9_&size=750:*" alt="Plastrail" class="img-fluid w-100">
+                            <div class="company-logo-overlay">
+                                <img src="https://img.freepik.com/premium-vector/plastic-free-green-icon-badge-bpa-plastic-free-chemical-mark-vector-illustration_100456-10432.jpg" alt="Plastrail Logo">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h3 class="card-title mb-0">Plastrail</h3>
+                                <span class="badge bg-success">Sustainability</span>
+                            </div>
+                            <p class="card-text">A circular economy platform that rewards plastic recycling with travel experiences and other benefits.</p>
+                            <ul class="list-unstyled mb-3">
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Plastic collection incentive system</li>
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Rewards-based recycling</li>
+                                <li class="d-flex"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Adventure travel integration</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="https://plastrail.ccbp.tech/" class="btn btn-primary stretched-link">Explore Plastrail</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LAMP -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="company-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="https://keepontrucking.uk/wp-content/uploads/2022/01/smart-streetlights.jpg" alt="LAMP" class="img-fluid w-100">
+                            <div class="company-logo-overlay">
+                                <img src="https://us.123rf.com/450wm/vectorv/vectorv2105/vectorv210529500/169412331-glowing-neon-line-smart-street-light-system-icon-isolated-on-black-background-internet-of-things.jpg" alt="LAMP Logo">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h3 class="card-title mb-0">LAMP</h3>
+                                <span class="badge bg-info">Smart Cities</span>
+                            </div>
+                            <p class="card-text">Decentralized street lighting solution powered by renewable energy, ensuring safety and efficiency.</p>
+                            <ul class="list-unstyled mb-3">
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Solar-powered street lights</li>
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Smart monitoring system</li>
+                                <li class="d-flex"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Decentralized energy grid</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="https://lampservice.ccbp.tech/" class="btn btn-primary stretched-link">Explore LAMP</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quantum Robotics -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="company-card card h-100">
+                        <div class="card-img-top position-relative">
+                            <img src="https://swisscognitive.ch/wp-content/uploads/2019/01/AI-Robots.jpeg" alt="Quantum Robotics" class="img-fluid w-100">
+                            <div class="company-logo-overlay">
+                                <img src="https://t3.ftcdn.net/jpg/11/12/99/30/360_F_1112993082_fykQLcZFuCduGyPCAxlxAwVHj0gTVcub.jpg" alt="Quantum Robotics Logo">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h3 class="card-title mb-0">Quantum Robotics</h3>
+                                <span class="badge bg-purple">Advanced Tech</span>
+                            </div>
+                            <p class="card-text">Innovating the future with intelligent Humanoid robotics integrated with AI-powered software.</p>
+                            <ul class="list-unstyled mb-3">
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> AI-powered humanoid robots</li>
+                                <li class="d-flex mb-2"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Advanced machine learning</li>
+                                <li class="d-flex"><i class="fas fa-check-circle text-primary me-2 mt-1"></i> Custom robotics solutions</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <a href="https://qrobotics.ccbp.tech/" class="btn btn-primary stretched-link">Explore Robotics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Founder Section -->
+    <section id="founder" class="section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-uppercase text-primary mb-3">Leadership</h6>
+                <h2 class="section-title">Our Founder</h2>
+                <p class="section-subtitle">Visionary leadership driving innovation across our portfolio companies.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="founder-card card shadow">
+                        <div class="card-body text-center p-4 p-md-5">
+                            <img src="https://avatars.githubusercontent.com/u/147239869?v=4" alt="Pandiselvam" class="rounded-circle founder-img mb-4">
+                            <h3 class="mb-3" style="color: var(--gold);">Pandiselvam</h3>
+                            <p class="text-muted mb-4">Founder & CEO</p>
+                            <p class="mb-4">Pandiselvam is the visionary behind Neura Global, with over 2 years of experience in Research and Development. His leadership has guided our portfolio companies to develop innovative solutions that address pressing global challenges.</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="#" class="btn btn-outline-primary px-4">Full Bio</a>
+                                <a href="#contact" class="btn btn-primary px-4">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQs Section -->
+    <section id="faqs" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-uppercase text-primary mb-3">Support</h6>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about Neura Global and our portfolio companies.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    What is Neura Global's business model?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Neura Global operates as a holding company that invests in and acquires innovative technology startups. We provide capital, strategic guidance, and operational support to help our portfolio companies scale while allowing them to maintain their entrepreneurial spirit and brand identity.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    How can I invest in Neura Global or its portfolio companies?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We periodically raise funds for new investments. Please contact our investor relations team through the contact form to express your interest. For direct investment in our portfolio companies, we can facilitate introductions once we understand your investment thesis.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Where are you located?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our headquarters is located at KendayaGoundanoor, Murunellikottai (Post), Vedasandur (Taluk), Dindigul - 624710, Tamil Nadu, India. Our portfolio companies have operations across multiple locations depending on their market needs.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    How does Neura Global select companies for its portfolio?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We look for companies with innovative technology solutions that address significant market needs, strong founding teams, and scalable business models. Our focus areas include sustainability, automation, and advanced technologies that can benefit from our expertise and network.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    Do you offer custom solutions for enterprises?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, several of our portfolio companies offer customized solutions for enterprise clients. Depending on your needs, we can connect you with the most appropriate team to develop tailored solutions. Please contact us with your specific requirements.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-uppercase text-primary mb-3">Get in Touch</h6>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Reach out for investment opportunities, partnerships, or media inquiries.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <form action="https://formspree.io/f/xnqoqzqz" method="POST" class="p-4 p-md-5 shadow-sm bg-white rounded">
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select class="form-select" id="subject" name="subject">
+                                <option value="investment">Investment Inquiry</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="media">Media Inquiry</option>
+                                <option value="careers">Careers</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info-card p-4 p-md-5 h-100 text-white">
+                        <h3 class="mb-4">Contact Information</h3>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-envelope me-3 mt-1"></i>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <a href="mailto:pandiselvam1216@gmail.com" class="text-white">pandiselvam1216@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-phone me-3 mt-1"></i>
+                            <div>
+                                <h5 class="mb-1">Phone</h5>
+                                <a href="tel:+917010953595" class="text-white">+91 7010953595</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                            <div>
+                                <h5 class="mb-1">Address</h5>
+                                <p>KendayaGoundanoor, Murunellikottai (Post),<br> Vedasandur (Taluk), Dindigul - 624710,<br> Tamil Nadu, India</p>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="mb-3">Follow Us</h5>
+                            <div class="d-flex">
+                                <a href="https://facebook.com" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://instagram.com" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top btn btn-primary"><i class="fas fa-arrow-up"></i></a>
+    
+    <!-- Footer -->
+    <footer class="text-white fade-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Neura Global</h5>
+                    <p>Investing in innovative technology companies that are shaping the future.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white">Home</a></li>
+                        <li class="mb-2"><a href="#about" class="text-white">About</a></li>
+                        <li class="mb-2"><a href="#companies" class="text-white">Companies</a></li>
+                        <li class="mb-2"><a href="#faqs" class="text-white">FAQs</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">Our Companies</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://plastrail.ccbp.tech/" class="text-white">Plastrail</a></li>
+                        <li class="mb-2"><a href="https://lampservice.ccbp.tech/" class="text-white">LAMP</a></li>
+                        <li><a href="https://qrobotics.ccbp.tech/" class="text-white">Quantum Robotics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="mb-3">Newsletter</h5>
+                    <p>Subscribe to our newsletter for updates on our portfolio companies.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 Neura Global Technologies. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Initialize animations
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+    </script>
+</body>
+</html>
